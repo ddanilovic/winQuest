@@ -2,7 +2,7 @@ import React from "react";
 
 const Login = ({ handleSubmit, handleChange }) => {
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="email"
@@ -17,10 +17,11 @@ const Login = ({ handleSubmit, handleChange }) => {
         onChange={handleChange}
       />
       <br />
-      <button className="btn" onClick={handleSubmit}>
+      {/* disabled={loading} */}
+      <button type="submit" className="btn">
         Login
       </button>
-    </div>
+    </form>
   );
 };
 export default Login;
