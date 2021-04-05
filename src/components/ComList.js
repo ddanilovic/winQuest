@@ -1,12 +1,18 @@
 import React from "react";
 import Spinner from "../ui/Spinner";
+import { useGlobalContext } from "../context";
 import Post from "./Post";
 
-const ComList = ({ com, loading }) => {
+const ComList = ({ query }) => {
+  const { loading, com, singlePost} = useGlobalContext();
+  const postId = query - 1
   return loading ? (
     <Spinner />
   ) : (
     <main>
+      <section className="list-posts">
+        <Post p={singlePost} />
+      </section>
       {com.map((p) => (
         <div key={p.id}>
           <h4>{p.email}</h4>

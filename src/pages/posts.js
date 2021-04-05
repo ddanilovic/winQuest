@@ -1,24 +1,17 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PostList from "../components/PostList";
+import { useGlobalContext } from "../context";
 
 function Posts() {
-  const [loading, setLoading] = useState(true);
-  const [posts, setPosts] = useState([]);
+  const { posts, fetchItems} = useGlobalContext();
 
   useEffect(() => {
-    const fetchItems = async () => {
-      const result = await axios("https://jsonplaceholder.typicode.com/posts");
-      setPosts(result.data);
-      setLoading(false);
-    };
-
-    fetchItems();
-  }, []); //argument is for dependencies
+    fetchItems("https://jsonplaceholder.typicode.com/posts");
+  }, []); 
 
   return (
     <div>
-      <PostList posts={posts} loading={loading} />
+      <PostList posts={posts} />
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import React from "react";
 import Spinner from "../ui/Spinner";
 import Post from "./Post";
+import { useGlobalContext } from "../context";
 
-const PostList = ({ posts, loading }) => {
+const PostList = () => {
+  const { loading, posts } = useGlobalContext();
   return loading ? (
     <Spinner />
   ) : (
