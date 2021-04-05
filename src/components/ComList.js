@@ -3,24 +3,27 @@ import Spinner from "../ui/Spinner";
 import { useGlobalContext } from "../context";
 import Post from "./Post";
 
-const ComList = ({ query }) => {
+const ComList = () => {
   const { loading, com, singlePost} = useGlobalContext();
-  const postId = query - 1
   return loading ? (
     <Spinner />
   ) : (
-    <main>
-      <section className="list-posts">
-        <Post p={singlePost} />
+    <>
+      <Post p={singlePost} />
+      <section className="comments">
+      <div class="info-box">
+            <h3>Comments</h3>
+      </div>
+        {com.map((p) => (
+          
+            <div class="comment-info"key={p.id}>
+              <h6><span>{p.email}</span> commented on <span>21MAR2021 10:14</span></h6>
+              <p>{p.body}</p>
+            </div>
+          
+        ))}
       </section>
-      {com.map((p) => (
-        <div key={p.id}>
-          <h4>{p.email}</h4>
-          <h2>{p.name}</h2>
-          <p>{p.body}</p>
-        </div>
-      ))}
-    </main>
+    </>
   );
 };
 

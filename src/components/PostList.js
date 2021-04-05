@@ -8,11 +8,11 @@ const PostList = () => {
   return loading ? (
     <Spinner />
   ) : (
-    <section className="list-posts">
+    <>
       {posts.map((p) => (
         <Post p={p} key={p.id} />
       ))}
-    </section>
+    </>
   );
 };
 

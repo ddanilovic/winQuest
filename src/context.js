@@ -8,7 +8,8 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   const [singlePost, setSinglePost] = useState([]);
-  const [userModal, setUserModal] = useState([]);
+  const [userModal, setUserModal] = useState(0);
+  const [userInfoModal, setUserInfoModal] = useState([]);
   const [com, setCom] = useState([]);
 
 
@@ -22,14 +23,17 @@ const AppProvider = ({ children }) => {
     }
      else if(url.split("/").slice(-1).toString() === "posts") {
       setPosts(result.data);
-    } else {
+    } else { //add logic for modal
+      setUserInfoModal(result.data)
       console.log("404 go to homepage")
     }
     setLoading(false);
   };
 
-  const openModal = () => {
+  const openModal = (id) => {
     setIsModalOpen(true);
+    setUserModal(id)
+    console.log("works")
   };
   const closeModal = () => {
     setIsModalOpen(false);
@@ -46,7 +50,8 @@ const AppProvider = ({ children }) => {
         userModal,
         fetchItems,
         loading,
-        singlePost
+        singlePost,
+        userInfoModal
         
       }}
     >

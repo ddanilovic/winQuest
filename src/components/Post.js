@@ -7,12 +7,15 @@ const Post = ({ p }) => {
   const {openModal} = useGlobalContext()
   return (
     <Link to={`/${p.id}`}>
-      <section className="list-posts">
-        <h2>{p.title}</h2>
-        <p>{p.body}</p>
-        <h4>
-          <User onClick={openModal} id={p.userId} />
-        </h4>
+      <section className="post">
+        <div class="info">
+          <h2>{p.title}</h2>
+          <p>{p.body}</p>
+        </div>
+        <div className="detail">
+          <h4>23MAR21 10:15AM </h4>
+          <h4><User onClick={openModal} id={p.userId} /></h4>
+        </div>
       </section>
     </Link>
   );

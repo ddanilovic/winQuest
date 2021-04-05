@@ -11,9 +11,9 @@ const Blog = () => {
     }, []); 
   
     return (
-      <div>
+      <>
         <ComList query={query}/>
-      </div>
+      </>
     );
 };
 

@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import UserPostList from "./UserPostList"
+import UserInfo from "./UserInfo"
+
 
 import { useGlobalContext } from "../context";
 
 const UserModal = () => {
-    const {fetchItems} = useGlobalContext();
-    const query = window.location.href.split("/").slice(-1).toString();
+    const {fetchItems, userModal} = useGlobalContext();
     useEffect(() => {
-      fetchItems(`https://jsonplaceholder.typicode.com/users/${query}/posts`);
+      console.log(userModal)
+      fetchItems(`https://jsonplaceholder.typicode.com/users?userId=${userModal}`);
     }, []); 
   
     return (
       <div>
-        <UserPostList/>
+        <UserInfo />
+        {/* <UserPostList/> */}
       </div>
     );
 };
