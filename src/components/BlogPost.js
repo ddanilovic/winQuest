@@ -1,18 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import User from "./User";
 import { useGlobalContext } from '../context';
 
 const BlogPost = ({ p }) => {
-  const {openModal} = useGlobalContext()
+  const {modal} = useGlobalContext()
   return (
-      <section className="list-posts">
+    <>
+      <div className="detail posting">
+        <h4>23MAR21 10:15AM </h4>
+        <h4 onClick={modal(p.id)}><User id={p.userId} /></h4>
+      </div>
+      <div className="info">
         <h2>{p.title}</h2>
         <p>{p.body}</p>
-        <h4>
-          <User onClick={openModal(p.userId)} id={p.userId} />
-        </h4>
-      </section>
+      </div>
+    </>
   );
 };
 

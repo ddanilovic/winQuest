@@ -1,29 +1,30 @@
 import React from "react";
 import Spinner from "../ui/Spinner";
 import { useGlobalContext } from "../context";
-import Post from "./Post";
+import BlogPost from "./BlogPost";
 
 const ComList = () => {
   const { loading, com, singlePost} = useGlobalContext();
   return loading ? (
     <Spinner />
   ) : (
-    <>
-      <Post p={singlePost} />
-      <section className="comments">
-      <div class="info-box">
-            <h3>Comments</h3>
-      </div>
-        {com.map((p) => (
-          
-            <div class="comment-info"key={p.id}>
-              <h6><span>{p.email}</span> commented on <span>21MAR2021 10:14</span></h6>
-              <p>{p.body}</p>
-            </div>
-          
-        ))}
+    <div class="blog-post">
+      <section class="post">
+        <BlogPost p={singlePost} />
+        <div className="comments">
+          <div className="info-box">
+                <h3>Comments</h3>
+          </div>
+            {com.map((p) => (
+                <div className="info-box" key={p.id}>
+                  <h6><span>{p.email}</span> commented on <span>21MAR2021 10:14AM</span></h6>
+                  <p>{p.body}</p>
+                </div>     
+            ))}
+        </div>
       </section>
-    </>
+      
+    </div>
   );
 };
 

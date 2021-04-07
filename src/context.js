@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 
+
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
@@ -8,7 +9,7 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
   const [singlePost, setSinglePost] = useState([]);
-  const [userModal, setUserModal] = useState(0);
+  const [userModal, setUserModal] = useState(1);
   const [userInfoModal, setUserInfoModal] = useState([]);
   const [com, setCom] = useState([]);
 
@@ -23,21 +24,29 @@ const AppProvider = ({ children }) => {
     }
      else if(url.split("/").slice(-1).toString() === "posts") {
       setPosts(result.data);
-    } else { //add logic for modal
-      setUserInfoModal(result.data)
-      console.log("404 go to homepage")
+    // } else if (typeof url.split("=").slice(-1) === "object"){ 
+    //   setUserInfoModal(result.data) 
+    //   console.log("modall")
+    } else {
+      console.log("404 go back to homepage")
     }
     setLoading(false);
   };
 
-  const openModal = (id) => {
+  const modal = (id) => {
+    // const data = fetchItems(`https://jsonplaceholder.typicode.com/users?id=${id}`) 
+    // setUserInfoModal(data)
+    //openModal() //this might be a problem
+  }
+
+  const openModal = () => {
     setIsModalOpen(true);
-    setUserModal(id)
-    console.log("works")
+    // setUserModal(id)
   };
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
 
   return (
     <AppContext.Provider
@@ -51,8 +60,8 @@ const AppProvider = ({ children }) => {
         fetchItems,
         loading,
         singlePost,
+        modal, 
         userInfoModal
-        
       }}
     >
       {children}

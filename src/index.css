@@ -10,6 +10,7 @@ Variables
 :root {
   --clr-primary-1: #428e99; 
   --clr-primary-2: #FBEB7D;
+  --opacity: rgba(255,255,255,0.72);
   --transition: all 0.3s linear;
   --spacing: 0.1rem;
   --radius: 0.25rem;
@@ -151,16 +152,17 @@ main {
 
 nav {
   width: 90vw;
-  height: 6rem;
+  padding: 1rem;
   margin: 0 auto;
   max-width: var(--max-width);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid black;
 }
 
-nav img {
-  margin-top: .375rem;
+nav h4 {
+  margin-bottom: 0;
 }
 /* LOGIN FORM */
 .container {
@@ -187,8 +189,14 @@ nav img {
 }
 
 .logo {
-  width: 200px;
-  margin-bottom: 25px;
+  width: 150px;
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 992px) {
+  .logo {
+    width: 230px;
+    margin-bottom: 10px;
+  }
 }
 
 /* BLOGS */
@@ -207,13 +215,21 @@ nav img {
 .posting {
   margin-bottom: 1rem;
 }
-
-.comments {
-  padding-left: 1rem;
+.info {
+  border: 1px solid black;
+  padding:1rem;
 }
-
+.info-box h3{
+  margin-bottom: 0;
+}
 .info-box {
-  margin-bottom: 2rem;
+  border: 1px solid black;
+  border-top:0.5px;
+  padding:1rem;
+}
+.comment-info {
+  border: 1px solid black;
+  padding:0.5rem;
 }
 
 .comment-info > p{
@@ -235,7 +251,7 @@ Modal
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--opacity);
   display: grid;
   place-items: center;
   transition: var(--transition);
@@ -248,11 +264,11 @@ Modal
   z-index: 10;
 }
 .modal-container {
-  background: var(--clr-white);
+  background: var(--clr-primary-1);
   border-radius: var(--radius);
-  width: 90vw;
-  height: 30vh;
-  max-width: var(--fixed-width);
+  width: 80vw;
+  height: 80vh;
+  max-width: var(--max-width);
   text-align: center;
   display: grid;
   place-items: center;
@@ -268,8 +284,6 @@ Modal
   color: var(--clr-red-dark);
   cursor: pointer;
 }
-
-
 
 .links a {
   display: flex;
