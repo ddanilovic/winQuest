@@ -16,9 +16,10 @@ function App() {
         <Route exact path="/login" component={LoginUser} />
         <Route exact path="/" component={Posts}/>
         <Route exact path="/logout" component={LogoutUser} />
-        <Route exact path="/error" component={Error} />
+        <Route path="/error" component={Error} />
         <Route exact path={`/:slug`} component={Blog} />
       </Switch>
+      
     </>
   );
 }

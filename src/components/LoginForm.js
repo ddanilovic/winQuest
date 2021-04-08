@@ -8,24 +8,25 @@ function LoginForm({ error, disabled, details, setDetails, submitHandler }) {
         <section className="container">
           <img src={logo} alt="logo" className="logo" />
           <div className="form-group">
-            <label htmlFor="email">Email</label>
             <input
               type="text"
-              onChange={(e) => setDetails({ ...details, email: e.target.value })} //enter value into the state while details typing
+              onChange={(e) => setDetails({ ...details, email: e.target.value })}
               value={details.email}
+              placeholder="email"
+              className="form-control"
             />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
             <input
               type="password"
-              onChange={(e) =>
-                setDetails({ ...details, password: e.target.value })}
+              onChange={(e) => setDetails({ ...details, password: e.target.value })}
               value={details.password}
+              placeholder="password"
+              className="form-control"
             />
             {error !== "" ? <div className="error">{error}</div> : ""}
           </div>
-          <input type="submit" value="login" disabled={disabled} />
+          <button type='submit' className='btn' disabled={disabled}>
+            submit
+          </button>
         </section>
       </form>
     </main>

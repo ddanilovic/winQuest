@@ -1,22 +1,35 @@
 import React, { useEffect } from "react";
 import ComList from "../components/ComList";
 import { useGlobalContext } from "../context";
-import Modal from "../components/Modal"
+import BlogPost from "../components/BlogPost";
+import Spinner from "../ui/Spinner";
 
-const Blog = () => {
-    const { fetchItems } = useGlobalContext();
-    const query = window.location.href.split("/").slice(-1).toString();
+const Blog = ({match}) => {
+    const { loading,fetchCom,fetchSinglePost,history,setSinglePost,setCom } = useGlobalContext();
+    //const query = match.params.slug //change this to router version
+    const query = match.params.slug
     useEffect(() => {
-      fetchItems(`https://jsonplaceholder.typicode.com/posts/${query}`);
-      fetchItems(`https://jsonplaceholder.typicode.com/posts/${query}/comments`);
-      //fetchItems(`https://jsonplaceholder.typicode.com/users?id=1`);//${id}
-      //fetchItems(`https://jsonplaceholder.typicode.com/users/${id}/posts`);
-    }, []); 
+      setSinglePost([]);
+      setCom([])
+      fetchSinglePost(query);
+      fetchCom(query);
+    },[query]); 
   
-    return (
+    return loading ? (
+      <Spinner />
+    ) : (
       <>
-        <Modal />
-        <ComList query={query}/>
+      {query >= 1 && 100 >= query && sessionStorage.getItem('user') === "John" ?
+        (    
+        <div className="blog-post">
+        <section className="post">
+          <BlogPost />
+          <ComList query={query}/>
+        </section>
+        </div>
+        ) 
+        : history.push('/error')
+      } 
       </>
     );
 };

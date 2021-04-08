@@ -1,21 +1,39 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import User from "./User";
+import Modal from "./Modal"
 import { useGlobalContext } from '../context';
 
-const BlogPost = ({ p }) => {
-  const {modal} = useGlobalContext()
+const BlogPost = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { fetchModal, fetchUserPosts, singlePost } = useGlobalContext();
+
+  useEffect(() => {
+    fetchModal(singlePost.userId);
+    fetchUserPosts(singlePost.userId);
+  },[singlePost.userId]); 
+
+  const openModal = () => {
+    setIsModalOpen(true);
+      
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <>
-      <div className="detail posting">
-        <h4>23MAR21 10:15AM </h4>
-        <h4 onClick={modal(p.id)}><User id={p.userId} /></h4>
-      </div>
-      <div className="info">
-        <h2>{p.title}</h2>
-        <p>{p.body}</p>
-      </div>
-    </>
+      <>
+        <Modal closeModal={closeModal} isModalOpen={isModalOpen}/>
+        <div className="detail posting">
+          <h4>23MAR21 10:15AM </h4>
+          <h4 onClick={openModal}><User id={singlePost.userId} /></h4>
+        </div>
+        <div className="info">
+          <h2>{singlePost.title}</h2>
+          <p>{singlePost.body}</p>
+        </div>
+      </>
   );
 };
 
 export default BlogPost;
+//  onClick={handleModal}
