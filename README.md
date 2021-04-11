@@ -2,8 +2,9 @@
 
 React application for reading news.
 
-USERNAME: john
-PASSWORD: 123
+*username : john*
+
+*password: 123*
 
 ## Getting Started
 
