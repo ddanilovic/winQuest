@@ -1,11 +1,14 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const Error = () => {
+  //error page
   return (
-    <div>
+    <div className="error">
       <h1>this page does not exist!</h1>
-      <Link to="/">go back to home</Link>
+      <Link className="link" to="/">
+        go back to home
+      </Link>
     </div>
   );
 };

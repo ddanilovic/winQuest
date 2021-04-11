@@ -1,28 +1,20 @@
-import React from 'react'
+import React from "react";
 import Spinner from "../ui/Spinner";
 import { useGlobalContext } from "../context";
+import UserPosts from "./UserPosts";
+import UserModal from "./UserModal";
 
 const UserList = () => {
-    const { loading, userInfoModal, userPosts} = useGlobalContext();
-    console.log(userPosts)
-  return loading ? (
+  const { loading, userInfoModal } = useGlobalContext(); //import data from state management system
+
+  return loading ? ( //if loading display spinner
     <Spinner />
   ) : (
-    <>   
-        {userInfoModal === [] ? <Spinner /> : 
-          <div>
-            <h3>{userInfoModal[0].username}</h3>
-            <h2>{userInfoModal[0].name}</h2>
-          </div>
-        }
-        {userPosts === [] ? <Spinner /> : //component with map needed for these posts!
-          <div>
-            <h3>{userInfoModal[0].username}</h3> 
-            <h2>{userInfoModal[0].name}</h2>
-          </div>
-        }     
+    <>
+      {userInfoModal !== [] ? <UserModal /> : null}
+      <UserPosts />
     </>
   );
-}
+};
 
-export default UserList
+export default UserList;

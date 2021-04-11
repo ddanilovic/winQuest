@@ -2,6 +2,9 @@
 
 React application for reading news.
 
+USERNAME: john
+PASSWORD: 123
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -37,4 +40,3 @@ npm run start
 ```
 
 4. Explore
-

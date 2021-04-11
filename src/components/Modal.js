@@ -1,8 +1,9 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
-import UserList from "./UserList"
+import UserList from "./UserList";
+import logo from "../assets/logo.png";
 
-const Modal = ({isModalOpen, closeModal}) => {
+const Modal = ({ isModalOpen, closeModal }) => {
   return (
     <div
       className={`${
@@ -10,12 +11,13 @@ const Modal = ({isModalOpen, closeModal}) => {
       }`}
     >
       <div className="modal-container">
-        <section className="post">
-        {isModalOpen? <UserList /> : ""}
-        </section>
-        <button className="close-modal-btn" onClick={closeModal}>
-          <FaTimes></FaTimes>
-        </button>
+        <div className="modal-nav">
+          <img src={logo} alt="logo" className="logo" />
+          <button className="close-modal-btn" onClick={closeModal}>
+            <FaTimes></FaTimes>
+          </button>
+        </div>
+        <div className="modal-info">{isModalOpen ? <UserList /> : null}</div>
       </div>
     </div>
   );

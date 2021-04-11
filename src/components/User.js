@@ -1,4 +1,5 @@
 const User = ({ id }) => {
+  //set user placeholder
   switch (id) {
     case 1:
       return "Bret";

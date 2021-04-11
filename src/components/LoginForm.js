@@ -1,7 +1,7 @@
 import React from "react";
-import logo from '../assets/logo.png'
+import logo from "../assets/logo.png";
 
-function LoginForm({ error, disabled, details, setDetails, submitHandler }) {  
+function LoginForm({ error, disabled, details, setDetails, submitHandler }) {
   return (
     <main>
       <form onSubmit={submitHandler}>
@@ -10,27 +10,30 @@ function LoginForm({ error, disabled, details, setDetails, submitHandler }) {
           <div className="form-group">
             <input
               type="text"
-              onChange={(e) => setDetails({ ...details, email: e.target.value })}
+              onChange={(e) =>
+                setDetails({ ...details, email: e.target.value })
+              }
               value={details.email}
-              placeholder="email"
+              placeholder="user"
               className="form-control"
             />
             <input
               type="password"
-              onChange={(e) => setDetails({ ...details, password: e.target.value })}
+              onChange={(e) =>
+                setDetails({ ...details, password: e.target.value })
+              }
               value={details.password}
               placeholder="password"
               className="form-control"
             />
-            {error !== "" ? <div className="error">{error}</div> : ""}
+            {error !== "" ? <div className="form-error">{error}</div> : ""}
           </div>
-          <button type='submit' className='btn' disabled={disabled}>
+          <button type="submit" className="btn" disabled={disabled}>
             submit
           </button>
         </section>
       </form>
     </main>
-    
   );
 }
 
